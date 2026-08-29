@@ -1,42 +1,68 @@
-export function ExperienceInfo({ data, onChange, onPrevious, onSave }) {
+export function ExperienceInfo({
+  data,
+  onChange,
+  onAdd,
+  onPrevious,
+  onSave,
+  onRemove,
+}) {
   return (
     <div>
-      <div>
-        <label>Company:</label>
-        <input name="company" value={data.company} onChange={onChange} />
-      </div>
+      <h2>Experience</h2>
 
-      <div>
-        <label>Position:</label>
-        <input name="position" value={data.position} onChange={onChange} />
-      </div>
+      {data.map((experience, index) => (
+        <div key={index}>
+          <div>
+            <input
+              name="company"
+              value={experience.company}
+              onChange={(event) => onChange(index, event)}
+            />
+          </div>
 
-      <div>
-        <label>Responsibilities:</label>
-        <textarea
-          name="responsibilities"
-          value={data.responsibilities}
-          onChange={onChange}
-        />
-      </div>
+          <div>
+            <input
+              name="position"
+              value={experience.position}
+              onChange={(event) => onChange(index, event)}
+            />
+          </div>
 
-      <div>
-        <label>From:</label>
-        <input type="month" name="from" value={data.from} onChange={onChange} />
-      </div>
+          <div>
+            <textarea
+              name="responsibilities"
+              value={experience.responsibilities}
+              onChange={(event) => onChange(index, event)}
+            />
+          </div>
 
-      <div>
-        <label>Until:</label>
-        <input
-          type="month"
-          name="until"
-          value={data.until}
-          onChange={onChange}
-        />
-      </div>
+          <div>
+            <input
+              type="month"
+              name="from"
+              value={experience.from}
+              onChange={(event) => onChange(index, event)}
+            />
+
+            <input
+              type="month"
+              name="until"
+              value={experience.until}
+              onChange={(event) => onChange(index, event)}
+            />
+          </div>
+
+          <div>
+            {data.length > 1 && (
+              <button onClick={() => onRemove(index)}>X</button>
+            )}
+          </div>
+        </div>
+      ))}
 
       <button onClick={onPrevious}>Previous</button>
       <button onClick={onSave}>Save CV</button>
+      <button onClick={onAdd}>Add experience</button>
     </div>
   );
 }

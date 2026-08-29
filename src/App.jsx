@@ -15,20 +15,24 @@ export function App() {
     phone: "",
   });
 
-  const [educationInfo, setEducationInfo] = useState({
-    school: "",
-    title: "",
-    from: "",
-    until: "",
-  });
+  const [educationInfo, setEducationInfo] = useState([
+    {
+      school: "",
+      title: "",
+      from: "",
+      until: "",
+    },
+  ]);
 
-  const [experienceInfo, setExperienceInfo] = useState({
-    company: "",
-    position: "",
-    responsibilities: "",
-    from: "",
-    until: "",
-  });
+  const [experienceInfo, setExperienceInfo] = useState([
+    {
+      company: "",
+      position: "",
+      responsibilities: "",
+      from: "",
+      until: "",
+    },
+  ]);
 
   function handleNext() {
     setCurrentStep((step) => step + 1);
@@ -47,14 +51,74 @@ export function App() {
     }));
   }
 
+  function handleEducationChange(index, event) {
+    const { name, value } = event.target;
+
+    setEducationInfo((currentInfo) =>
+      currentInfo.map((education, currentIndex) =>
+        currentIndex === index ? { ...education, [name]: value } : education,
+      ),
+    );
+  }
+
+  function handleAddEducation() {
+    setEducationInfo((currentInfo) => [
+      ...currentInfo,
+      {
+        school: "",
+        title: "",
+        from: "",
+        until: "",
+      },
+    ]);
+  }
+
+  function handleRemoveEducation(indexToRemove) {
+    setEducationInfo((currentInfo) =>
+      currentInfo.filter((_, index) => index !== indexToRemove),
+    );
+  }
+
+  function handleExperienceChange(index, event) {
+    const { name, value } = event.target;
+
+    setExperienceInfo((currentInfo) =>
+      currentInfo.map((experience, currentIndex) =>
+        currentIndex === index ? { ...experience, [name]: value } : experience,
+      ),
+    );
+  }
+
+  function handleAddExperience() {
+    setExperienceInfo((currentInfo) => [
+      ...currentInfo,
+      {
+        company: "",
+        position: "",
+        responsibilities: "",
+        from: "",
+        until: "",
+      },
+    ]);
+  }
+
+  function handleRemoveExperience(indexToRemove) {
+    setExperienceInfo((currentInfo) =>
+      currentInfo.filter((_, index) => index !== indexToRemove),
+    );
+  }
+
   function handleSave() {
     setCurrentStep(3);
   }
 
   function handleEdit() {
-    setCurrentStep(0);
+    setCurrentStep(1);
   }
 
+  function handlePrint() {
+    window.print();
+  }
   return (
     <main>
       {currentStep === 0 && (
@@ -68,18 +132,22 @@ export function App() {
       {currentStep === 1 && (
         <EducationInfo
           data={educationInfo}
-          onChange={(event) => handleChange(event, setEducationInfo)}
+          onChange={handleEducationChange}
+          onAdd={handleAddEducation}
           onPrevious={handlePrevious}
           onNext={handleNext}
+          onRemove={handleRemoveEducation}
         />
       )}
 
       {currentStep === 2 && (
         <ExperienceInfo
           data={experienceInfo}
-          onChange={(event) => handleChange(event, setExperienceInfo)}
+          onChange={handleExperienceChange}
+          onAdd={handleAddExperience}
           onPrevious={handlePrevious}
           onSave={handleSave}
+          onRemove={handleRemoveExperience}
         />
       )}
 
@@ -89,6 +157,7 @@ export function App() {
           educationInfo={educationInfo}
           experienceInfo={experienceInfo}
           onEdit={handleEdit}
+          handlePrint={handlePrint}
         />
       )}
     </main>

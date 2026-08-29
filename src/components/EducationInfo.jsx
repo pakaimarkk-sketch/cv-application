@@ -1,33 +1,65 @@
-export function EducationInfo({ data, onChange, onNext, onPrevious }) {
+export function EducationInfo({
+  data,
+  onChange,
+  onAdd,
+  onPrevious,
+  onNext,
+  onRemove,
+}) {
   return (
     <div>
-      <div>
-        <label>School:</label>
-        <input name="school" value={data.school} onChange={onChange} />
-      </div>
+      <h2>Education</h2>
 
-      <div>
-        <label>Title of study:</label>
-        <input name="title" value={data.title} onChange={onChange} />
-      </div>
+      {data.map((education, index) => (
+        <div key={index}>
+          <div>
+            <label>School:</label>
+            <input
+              name="school"
+              value={education.school}
+              onChange={(event) => onChange(index, event)}
+            />
+          </div>
 
-      <div>
-        <label>From:</label>
-        <input type="month" name="from" value={data.from} onChange={onChange} />
-      </div>
+          <div>
+            <label>Title:</label>
+            <input
+              name="title"
+              value={education.title}
+              onChange={(event) => onChange(index, event)}
+            />
+          </div>
 
-      <div>
-        <label>Until:</label>
-        <input
-          type="month"
-          name="until"
-          value={data.until}
-          onChange={onChange}
-        />
-      </div>
+          <div>
+            <label>From:</label>
+            <input
+              type="month"
+              name="from"
+              value={education.from}
+              onChange={(event) => onChange(index, event)}
+            />
+          </div>
+
+          <div>
+            <label>Until:</label>
+            <input
+              type="month"
+              name="until"
+              value={education.until}
+              onChange={(event) => onChange(index, event)}
+            />
+          </div>
+          <div>
+            {data.length > 1 && (
+              <button onClick={() => onRemove(index)}>X</button>
+            )}
+          </div>
+        </div>
+      ))}
 
       <button onClick={onPrevious}>Previous</button>
       <button onClick={onNext}>Next</button>
+      <button onClick={onAdd}>Add education</button>
     </div>
   );
 }

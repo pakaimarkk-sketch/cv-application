@@ -3,6 +3,7 @@ export function CVPreview({
   educationInfo,
   experienceInfo,
   onEdit,
+  handlePrint,
 }) {
   return (
     <div>
@@ -11,21 +12,34 @@ export function CVPreview({
       <p>{generalInfo.phone}</p>
 
       <h2>Education</h2>
-      <p>{educationInfo.school}</p>
-      <p>{educationInfo.title}</p>
-      <p>
-        {educationInfo.from} - {educationInfo.until}
-      </p>
+
+      {educationInfo.map((education, index) => (
+        <div key={index}>
+          <p>{education.school}</p>
+          <p>{education.title}</p>
+          <p>
+            {education.from} - {education.until}
+          </p>
+        </div>
+      ))}
 
       <h2>Experience</h2>
-      <p>{experienceInfo.company}</p>
-      <p>{experienceInfo.position}</p>
-      <p>{experienceInfo.responsibilities}</p>
-      <p>
-        {experienceInfo.from} - {experienceInfo.until}
-      </p>
 
-      <button onClick={onEdit}>Edit CV</button>
+      {experienceInfo.map((experience, index) => (
+        <div key={index}>
+          <p>{experience.company}</p>
+          <p>{experience.position}</p>
+          <p>{experience.responsibilities}</p>
+          <p>
+            {experience.from} - {experience.until}
+          </p>
+        </div>
+      ))}
+
+      <div className="cv-controls">
+        <button onClick={onEdit}>Edit CV</button>
+        <button onClick={handlePrint}>Print CV</button>
+      </div>
     </div>
   );
 }
