@@ -1,5 +1,6 @@
 import { useState } from "react";
-
+import "./styles/forms.css";
+import "./styles/global.css";
 import { GeneralInfo } from "./components/GeneralInfo";
 import { EducationInfo } from "./components/EducationInfo";
 import { ExperienceInfo } from "./components/ExperienceInfo";
