@@ -12,8 +12,18 @@ export function EducationInfo({ data, onChange, onNext, onPrevious }) {
       </div>
 
       <div>
-        <label>Date:</label>
-        <input name="date" value={data.date} onChange={onChange} />
+        <label>From:</label>
+        <input type="month" name="from" value={data.from} onChange={onChange} />
+      </div>
+
+      <div>
+        <label>Until:</label>
+        <input
+          type="month"
+          name="until"
+          value={data.until}
+          onChange={onChange}
+        />
       </div>
 
       <button onClick={onPrevious}>Previous</button>
