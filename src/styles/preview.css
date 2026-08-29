@@ -1,0 +1,164 @@
+@page {
+  size: A4;
+  margin: 0;
+}
+
+@media print {
+  body {
+    margin: 0;
+    padding: 0;
+    background: white;
+  }
+
+  main {
+    display: block;
+    margin: 0;
+    padding: 0;
+  }
+
+  .preview-wrapper {
+    display: contents;
+  }
+
+  .cv-preview {
+    width: 210mm;
+    min-height: 297mm;
+
+    margin: 0;
+    padding: 15mm;
+
+    box-shadow: none;
+    border-radius: 0;
+
+    box-sizing: border-box;
+  }
+
+  .preview-actions {
+    display: none !important;
+  }
+}
+
+.preview-wrapper {
+  width: 100%;
+  padding: 3rem 1.5rem;
+}
+
+.cv-preview {
+  width: 100%;
+  max-width: 850px;
+  min-height: 1100px;
+
+  margin: 0 auto;
+  padding: 3rem;
+
+  background: white;
+
+  border-radius: 12px;
+
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+}
+
+.cv-header {
+  padding-bottom: 2rem;
+  margin-bottom: 2rem;
+  border-bottom: 3px solid #4f46e5;
+}
+
+.cv-header h1 {
+  margin: 0 0 0.5rem;
+  font-size: 2.6rem;
+  color: #1f2937;
+}
+
+.cv-contact {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+  color: #6b7280;
+}
+
+.cv-section h2 {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+
+  margin-bottom: 1.5rem;
+
+  font-size: 1rem;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+
+  color: #4f46e5;
+}
+
+.cv-section h2::after {
+  content: "";
+  flex: 1;
+  height: 1px;
+  background: #e5e7eb;
+}
+
+.cv-entry {
+  padding-left: 1rem;
+  margin-bottom: 1.75rem;
+  border-left: 3px solid #e5e7eb;
+}
+
+.cv-entry-title {
+  margin: 0;
+  font-size: 1.1rem;
+  color: #1f2937;
+}
+
+.cv-entry-subtitle {
+  margin: 0.25rem 0 0.75rem;
+  font-weight: 600;
+  color: #4f46e5;
+}
+
+.cv-date {
+  padding: 0.25rem 0.6rem;
+  border-radius: 999px;
+  background: #f3f4f6;
+  color: #6b7280;
+  font-size: 0.85rem;
+}
+
+.preview-actions {
+  max-width: 850px;
+
+  margin: 1.5rem auto 0;
+
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+}
+
+@media (max-width: 600px) {
+  .preview-wrapper {
+    padding: 1rem;
+  }
+
+  .cv-preview {
+    padding: 1.5rem;
+    min-height: auto;
+    border-radius: 8px;
+  }
+
+  .cv-header h1 {
+    font-size: 2rem;
+  }
+
+  .cv-entry-header {
+    flex-direction: column;
+    gap: 0.25rem;
+  }
+
+  .preview-actions {
+    flex-direction: column;
+  }
+
+  .preview-actions button {
+    width: 100%;
+  }
+}

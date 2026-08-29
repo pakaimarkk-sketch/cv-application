@@ -1,0 +1,132 @@
+.form-card {
+  width: 100%;
+  max-width: 700px;
+
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+
+  padding: 2rem;
+
+  background: #f3f4f6;
+  border: 1px solid #e5e7eb;
+  border-radius: 16px;
+
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+}
+
+.form-entry {
+  position: relative;
+
+  padding: 1.5rem;
+
+  background: #ffffff;
+  border: 1px solid #e5e7eb;
+  border-radius: 12px;
+
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+}
+
+.form-field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.form-field label {
+  font-weight: 600;
+  font-size: 1.5rem;
+}
+
+.form-field input,
+.form-field textarea {
+  width: 100%;
+
+  padding: 0.75rem 1rem;
+
+  border: 1px solid #d1d5db;
+  border-radius: 8px;
+
+  font-size: 1rem;
+}
+
+.form-field input:focus,
+.form-field textarea:focus {
+  outline: none;
+  border-color: #6366f1;
+}
+
+.form-actions {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  align-items: center;
+}
+
+.navigation-actions {
+  grid-column: 2;
+
+  display: flex;
+  gap: 0.75rem;
+}
+
+.add-button {
+  grid-column: 3;
+  justify-self: end;
+}
+
+.entries-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.entry-actions {
+  position: absolute;
+  top: 0.75rem;
+  right: 0.75rem;
+}
+
+button {
+  padding: 0.7rem 1.1rem;
+
+  border: none;
+  border-radius: 8px;
+
+  cursor: pointer;
+  font-weight: 600;
+
+  background: #6366f1;
+  color: white;
+}
+
+button:hover {
+  opacity: 0.9;
+}
+
+.button-secondary {
+  background: #e5e7eb;
+  color: #1f2937;
+}
+
+@media (max-width: 600px) {
+  .form-actions {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .navigation-actions {
+    display: flex;
+    width: 100%;
+    gap: 0.5rem;
+    padding-bottom: 0.5rem;
+  }
+
+  .navigation-actions button {
+    flex: 1;
+  }
+
+  .add-button {
+    width: 100%;
+  }
+}
