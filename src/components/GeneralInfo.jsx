@@ -1,12 +1,14 @@
 export function GeneralInfo({ data, onChange, onNext }) {
   return (
-    <div>
-      <div>
+    <div className="form-card">
+      <h2>General Information</h2>
+
+      <div className="form-field">
         <label>Name:</label>
         <input name="name" type="text" value={data.name} onChange={onChange} />
       </div>
 
-      <div>
+      <div className="form-field">
         <label>E-mail:</label>
         <input
           name="email"
@@ -16,7 +18,7 @@ export function GeneralInfo({ data, onChange, onNext }) {
         />
       </div>
 
-      <div>
+      <div className="form-field">
         <label>Phone number:</label>
         <input
           name="phone"
@@ -26,7 +28,9 @@ export function GeneralInfo({ data, onChange, onNext }) {
         />
       </div>
 
-      <button onClick={onNext}>Next</button>
+      <div className="form-actions">
+        <button onClick={onNext}>Next</button>
+      </div>
     </div>
   );
 }

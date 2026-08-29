@@ -1,3 +1,5 @@
+import "../styles/preview.css";
+
 export function CVPreview({
   generalInfo,
   educationInfo,
@@ -6,37 +8,54 @@ export function CVPreview({
   handlePrint,
 }) {
   return (
-    <div>
-      <h1>{generalInfo.name}</h1>
-      <p>{generalInfo.email}</p>
-      <p>{generalInfo.phone}</p>
+    <div className="preview-wrapper">
+      <div className="cv-preview">
+        <header className="cv-header">
+          <h1>{generalInfo.name}</h1>
 
-      <h2>Education</h2>
+          <div className="cv-contact">
+            <span>{generalInfo.email}</span>
+            <span>{generalInfo.phone}</span>
+          </div>
+        </header>
 
-      {educationInfo.map((education, index) => (
-        <div key={index}>
-          <p>{education.school}</p>
-          <p>{education.title}</p>
-          <p>
-            {education.from} - {education.until}
-          </p>
-        </div>
-      ))}
+        <section className="cv-section">
+          <h2>Education</h2>
 
-      <h2>Experience</h2>
+          {educationInfo.map((education, index) => (
+            <div className="cv-entry" key={index}>
+              <div className="cv-entry-header">
+                <h3>{education.school}</h3>
+                <span>
+                  {education.from} - {education.until}
+                </span>
+              </div>
 
-      {experienceInfo.map((experience, index) => (
-        <div key={index}>
-          <p>{experience.company}</p>
-          <p>{experience.position}</p>
-          <p>{experience.responsibilities}</p>
-          <p>
-            {experience.from} - {experience.until}
-          </p>
-        </div>
-      ))}
+              <p>{education.title}</p>
+            </div>
+          ))}
+        </section>
 
-      <div className="cv-controls">
+        <section className="cv-section">
+          <h2>Experience</h2>
+
+          {experienceInfo.map((experience, index) => (
+            <div className="cv-entry" key={index}>
+              <div className="cv-entry-header">
+                <h3>{experience.company}</h3>
+                <span>
+                  {experience.from} - {experience.until}
+                </span>
+              </div>
+
+              <p>{experience.position}</p>
+              <p>{experience.responsibilities}</p>
+            </div>
+          ))}
+        </section>
+      </div>
+
+      <div className="preview-actions">
         <button onClick={onEdit}>Edit CV</button>
         <button onClick={handlePrint}>Print CV</button>
       </div>
